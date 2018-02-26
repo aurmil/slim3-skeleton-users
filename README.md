@@ -162,4 +162,4 @@ A page title is compound as follows:
 
 ## License
 
-The MIT License (MIT). Please see [License File](https://github.com/aurmil/slim3-skeleton/blob/master/LICENSE.md) for more information.
+The MIT License (MIT). Please see [License File](https://github.com/aurmil/slim3-skeleton-users/blob/master/LICENSE.md) for more information.
