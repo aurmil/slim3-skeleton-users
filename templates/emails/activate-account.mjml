@@ -1,0 +1,16 @@
+<mjml>
+    <mj-head>
+        <mj-title>[subject]</mj-title>
+    </mj-head>
+    <mj-body>
+        <mj-container>
+            <mj-section>
+                <mj-column>
+                    <mj-text align="center">You recently created an account on [site_name], you need to confirm your email address to activate it.</mj-text>
+
+                    <mj-button href="[activate_account_url]">Activate my account</mj-button>
+                </mj-column>
+            </mj-section>
+        </mj-container>
+    </mj-body>
+</mjml>

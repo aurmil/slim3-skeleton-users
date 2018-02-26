@@ -1,0 +1,9 @@
+{% extends "layouts/main.twig" %}
+
+{% block bodyId %}user-account{% endblock %}
+
+{% block content %}
+    <p>mon compte</p>
+    <p><a href="{{ path_for('user-change-password-form')|e('html_attr') }}">Change my password</a></p>
+    <p><a href="{{ path_for('user-logout')|e('html_attr') }}">Log me out</a></p>
+{% endblock %}

@@ -1,0 +1,3 @@
+enable_csrf_token_persistence: false
+enable_remember_me: true
+new_account_requires_email_activation: true

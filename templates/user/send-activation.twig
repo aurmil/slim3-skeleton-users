@@ -1,0 +1,29 @@
+{% extends "layouts/main.twig" %}
+
+{% block bodyId %}user-send-activation{% endblock %}
+
+{% block content %}
+<div>
+    <form action="{{ path_for('user-send-activation')|e('html_attr') }}" method="post">
+        {% set success = flash('send_activation_form_success') %}
+        {% if success is same as(true) or success is same as(false) %}
+        <div class="alert {% if success %}alert-success{% else %}alert-danger{% endif %}" role="alert">{{ flash('send_activation_form_message')|raw }}</div>
+        {% endif %}
+
+        {% set oldData = flash('send_activation_form_data') %}
+
+        <p>Did not receive your account activation email? Enter the email address you used to sign up here and we will send you an activation link.</p>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" class="form-control" required placeholder="name@domain.com" {% if oldData.email is defined and oldData.email %}value="{{ oldData.email|e('html_attr') }}"{% endif %}>
+        </div>
+
+        {{ csrf() }}
+
+        <button type="submit" class="btn btn-primary">Send me an activation link</button>
+    </form>
+
+    <p><a href="{{ path_for('user-login-form')|e('html_attr') }}">Go back to login</a></p>
+</div>
+{% endblock %}

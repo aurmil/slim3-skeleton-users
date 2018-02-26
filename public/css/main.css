@@ -1,0 +1,7 @@
+@charset "UTF-8";
+
+form + p,
+form + p + p,
+body#user-account p:not(:first-of-type) {
+    margin-top: 1em;
+}

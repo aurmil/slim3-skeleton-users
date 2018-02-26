@@ -1,0 +1,45 @@
+{
+    "name": "aurmil/slim3-skeleton-users",
+    "description": "A Slim Framework 3 application skeleton with users authentication through Sentinel",
+    "type": "project",
+    "keywords": ["slimphp", "slim", "framework", "sentinel"],
+    "homepage": "https://github.com/aurmil/slim3-skeleton-users",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Aurélien Millet",
+            "homepage": "http://www.aurelien-millet.fr/",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "akrabat/rka-slim-session-middleware": "^2.0",
+        "cartalyst/sentinel": "2.0.*",
+        "egulias/email-validator": "^2.1",
+        "illuminate/database": "^5.4",
+        "illuminate/events": "^5.4",
+        "monolog/monolog": "^1.21",
+        "respect/validation": "^1.1",
+        "roave/security-advisories": "dev-master",
+        "slim/csrf": "^0.8.1",
+        "slim/flash": "^0.2.0",
+        "slim/slim": "^3.5",
+        "slim/twig-view": "^2.2",
+        "swiftmailer/swiftmailer": "^6.0",
+        "symfony/http-foundation": "^3.2",
+        "symfony/yaml": "^3.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^3.3"
+    }
+}

@@ -1,0 +1,41 @@
+{% extends "layouts/main.twig" %}
+
+{% block bodyId %}user-signup{% endblock %}
+
+{% block content %}
+<div>
+    <form action="{{ path_for('user-signup')|e('html_attr') }}" method="post">
+        {% set success = flash('signup_form_success') %}
+        {% if success is same as(true) or success is same as(false) %}
+        <div class="alert {% if success %}alert-success{% else %}alert-danger{% endif %}" role="alert">{{ flash('signup_form_message')|raw }}</div>
+        {% endif %}
+
+        {% set oldData = flash('signup_form_data') %}
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" class="form-control" required placeholder="name@domain.com" {% if oldData.email is defined and oldData.email %}value="{{ oldData.email|e('html_attr') }}"{% endif %}>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" class="form-control" required placeholder="*****">
+        </div>
+
+        <div class="form-group">
+            <label for="password_confirmation">Confirm password</label>
+            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" required placeholder="*****">
+        </div>
+
+        {{ csrf() }}
+
+        <button type="submit" class="btn btn-primary">Sign me up</button>
+    </form>
+
+    <p>Already have an account? <a href="{{ path_for('user-login-form')|e('html_attr') }}">Log in</a></p>
+
+    {% if config.new_account_requires_email_activation is defined and config.new_account_requires_email_activation %}
+    <p>Didn't receive activation email? <a href="{{ path_for('user-send-activation-form')|e('html_attr') }}">Ask to resend it</a></p>
+    {% endif %}
+</div>
+{% endblock %}

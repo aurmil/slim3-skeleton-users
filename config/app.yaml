@@ -1,0 +1,11 @@
+language_code: 'en'
+
+metas:
+    title: 'Slim 3 Skeleton with user auth'
+    title_separator: ' - '
+    description: ""
+
+# false or Google Analytics ID 'UA-XXXXX-Y'
+google_analytics_id: false
+
+mailer_from: { 'no-reply@localhost.com': 'Slim 3 Skeleton with user auth' }

@@ -1,0 +1,4 @@
+.php_cs.cache
+build.xml
+config/development/*
+config/production/*

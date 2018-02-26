@@ -1,0 +1,45 @@
+{% extends "layouts/main.twig" %}
+
+{% block bodyId %}user-login{% endblock %}
+
+{% block content %}
+<div>
+    <form action="{{ path_for('user-login')|e('html_attr') }}" method="post">
+        {% set success = flash('login_form_success') %}
+        {% if success is same as(true) or success is same as(false) %}
+        <div class="alert {% if success %}alert-success{% else %}alert-danger{% endif %}" role="alert">{{ flash('login_form_message')|raw }}</div>
+        {% endif %}
+
+        {% set oldData = flash('login_form_data') %}
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" class="form-control" required placeholder="name@domain.com" {% if oldData.email is defined and oldData.email %}value="{{ oldData.email|e('html_attr') }}"{% endif %}>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" class="form-control" required placeholder="*****" aria-describedby="passwordHelpBlock">
+            <span id="passwordHelpBlock" class="help-block"><a href="{{ path_for('user-forgot-password-form')|e('html_attr') }}">Forgot your password?</a></span>
+        </div>
+
+        {% if config.enable_remember_me is defined and config.enable_remember_me %}
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" name="remember_me" id="remember_me" value="on" {% if oldData.remember_me is defined and 'on' == oldData.remember_me %}checked="checked"{% endif %}> Stay signed in
+            </label>
+        </div>
+        {% endif %}
+
+        {{ csrf() }}
+
+        <button type="submit" class="btn btn-primary">Log me in</button>
+    </form>
+
+    <p>Don't have an account? <a href="{{ path_for('user-signup-form')|e('html_attr') }}">Sign up</a></p>
+
+    {% if config.new_account_requires_email_activation is defined and config.new_account_requires_email_activation %}
+    <p>Didn't receive activation email? <a href="{{ path_for('user-send-activation-form')|e('html_attr') }}">Ask to resend it</a></p>
+    {% endif %}
+</div>
+{% endblock %}

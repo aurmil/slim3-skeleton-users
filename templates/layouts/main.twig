@@ -1,0 +1,86 @@
+<!doctype html>
+<html class="no-js"{% if config.language_code is defined and config.language_code %} lang="{{ config.language_code|e('html_attr') }}"{% endif %}>
+    <head>
+        <meta charset="utf-8">
+
+        {# page title #}
+
+        {% set title = '' %}
+
+        {% if block('metaTitle') is defined %}
+            {% set title = block('metaTitle') %}
+        {% endif %}
+
+        {% if config.metas.title is defined and config.metas.title %}
+            {% if title and config.metas.title_separator is defined and config.metas.title_separator %}
+                {% set title = title ~ config.metas.title_separator %}
+            {% endif %}
+
+            {% set title = title ~ config.metas.title %}
+        {% endif %}
+
+        <title>{{ title }}</title>
+
+        {# meta tags #}
+
+        {% for key, value in config.metas %}
+            {% if value and key not in ['title', 'title_separator'] %}
+        <meta name="{{ key|e('html_attr') }}" content="{{ value|e('html_attr') }}">
+            {% endif %}
+        {% endfor %}
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="{{ base_url() }}/css/main.css">
+    </head>
+    <body id="{% block bodyId %}{% endblock %}">
+        <div class="container">
+            <!-- Static navbar -->
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">Slim 3</a>
+                    </div>
+
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="{{ path_for('home')|e('html_attr') }}">Home</a></li>
+                            <li><a href="{{ path_for('user-account')|e('html_attr') }}">My account</a></li>
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div><!--/.container-fluid -->
+            </nav>
+
+            {% set flash = flash('success') %}
+            {% if flash %}
+            <div class="alert alert-success" role="alert">{{ flash|raw }}</div>
+            {% endif %}
+
+            {% set flash = flash('error') %}
+            {% if flash %}
+            <div class="alert alert-danger" role="alert">{{ flash|raw }}</div>
+            {% endif %}
+
+            {% block content %}{% endblock %}
+        </div> <!-- /container -->
+
+        <script src="{{ base_url() }}/js/main.js"></script>
+
+        {% if config.google_analytics_id is defined and config.google_analytics_id %}
+        <script>
+            window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
+            ga('create','{{ config.google_analytics_id }}','auto');ga('send','pageview')
+        </script>
+        <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+        {% endif %}
+    </body>
+</html>
