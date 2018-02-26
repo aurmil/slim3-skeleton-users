@@ -1,6 +1,6 @@
 # https://github.com/Seldaek/monolog/blob/master/doc/02-handlers-formatters-processors.md
 
-logger_name: 'Slim3SkeletonUserAuth'
+logger_name: 'Slim3SkeletonUsers'
 
 StreamHandler:
     enable: true
@@ -10,12 +10,12 @@ NativeMailerHandler:
     enable: false
     level: ERROR
     to: ''
-    subject: 'Slim 3 Skeleton with user auth Error'
-    from: { 'no-reply@localhost.com': 'Slim 3 Skeleton with user auth' }
+    subject: 'Slim 3 Skeleton with users Error'
+    from: { 'no-reply@localhost.com': 'Slim 3 Skeleton with users' }
 
 SwiftMailerHandler:
     enable: false
     level: ERROR
     to: ''
-    subject: 'Slim 3 Skeleton with user auth Error'
-    from: { 'no-reply@localhost.com': 'Slim 3 Skeleton with user auth' }
+    subject: 'Slim 3 Skeleton with users Error'
+    from: { 'no-reply@localhost.com': 'Slim 3 Skeleton with users' }

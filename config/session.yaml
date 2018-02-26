@@ -2,7 +2,7 @@
 
 enable: true
 
-name: 'Slim3SkeletonUserAuth'
+name: 'Slim3SkeletonUsers'
 lifetime: 0
 path: '/'
 domain: ''
