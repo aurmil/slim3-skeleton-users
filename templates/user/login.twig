@@ -24,10 +24,9 @@
         </div>
 
         {% if config.enable_remember_me is defined and config.enable_remember_me %}
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" name="remember_me" id="remember_me" value="on" {% if oldData.remember_me is defined and 'on' == oldData.remember_me %}checked="checked"{% endif %}> Stay signed in
-            </label>
+        <div class="form-group form-check">
+            <input type="checkbox" name="remember_me" id="remember_me" class="form-check-input" value="on" {% if oldData.remember_me is defined and 'on' == oldData.remember_me %}checked="checked"{% endif %}>
+            <label class="form-check-label" for="remember_me">Stay signed in</label>
         </div>
         {% endif %}
 
