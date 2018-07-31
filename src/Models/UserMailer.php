@@ -51,14 +51,16 @@ class UserMailer
     }
 
     public function sendActivateAccountEmail(
-        string $to,
+        string $emailTo,
         string $activateAccountUrl
     ): int {
-        $body = str_replace([
+        $body = str_replace(
+            [
                 '[subject]',
                 '[site_name]',
                 '[activate_account_url]',
-            ], [
+            ],
+            [
                 'Activate your account',
                 $this->siteName,
                 $activateAccountUrl,
@@ -70,20 +72,22 @@ class UserMailer
         $mail->setSubject('Activate your account')
             ->setBody($body, 'text/html')
             ->setFrom($this->from)
-            ->setTo($to);
+            ->setTo($emailTo);
 
         return $this->mailer->send($mail);
     }
 
     public function sendResetPasswordEmail(
-        string $to,
+        string $emailTo,
         string $resetPasswordUrl
     ): int {
-        $body = str_replace([
+        $body = str_replace(
+            [
                 '[subject]',
                 '[site_name]',
                 '[reset_password_url]',
-            ], [
+            ],
+            [
                 'Reset your password',
                 $this->siteName,
                 $resetPasswordUrl,
@@ -95,7 +99,7 @@ class UserMailer
         $mail->setSubject('Reset your password')
             ->setBody($body, 'text/html')
             ->setFrom($this->from)
-            ->setTo($to);
+            ->setTo($emailTo);
 
         return $this->mailer->send($mail);
     }

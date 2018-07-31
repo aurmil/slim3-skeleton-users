@@ -149,7 +149,7 @@ class User
         ], !$sendActivationEmail);
 
         if (!$user) {
-            throw new \Exception;
+            throw new \Exception();
         }
 
         foreach ($roles as $slug) {
@@ -238,7 +238,7 @@ class User
         }
 
         if (!$this->sentinel->update($user, ['password' => $newPassword])) {
-            throw new \Exception;
+            throw new \Exception();
         }
     }
 
@@ -278,7 +278,7 @@ class User
             $user->email,
             $resetPasswordUrl
         )) {
-            throw new EmailNotSentException;
+            throw new EmailNotSentException();
         }
     }
 
@@ -309,7 +309,7 @@ class User
             $code,
             $password
         )) {
-            throw new \Exception;
+            throw new \Exception();
         }
     }
 
@@ -356,7 +356,7 @@ class User
             $user->email,
             $activateAccountUrl
         )) {
-            throw new EmailNotSentException;
+            throw new EmailNotSentException();
         }
     }
 
@@ -380,7 +380,7 @@ class User
         }
 
         if (!$activations->complete($user, $code)) {
-            throw new \Exception;
+            throw new \Exception();
         }
     }
 }

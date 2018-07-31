@@ -28,7 +28,7 @@ class UserController extends Controller
     {
         $data = $request->getParsedBody();
         $success = false;
-        $message = '';
+        $message = 'An error occurred, please try again.';
         $redirectUrl = $this->router->pathFor('user-signup-form');
 
         if (false !== $request->getAttribute('csrf_status')) {
@@ -37,6 +37,8 @@ class UserController extends Controller
                 ->key('password', v::stringType()->notEmpty())
                 ->keyValue('password_confirmation', 'equals', 'password')
                 ->validate($data);
+
+            $message = 'Invalid data, please correct them and try again.';
 
             if ($valid) {
                 try {
@@ -77,11 +79,7 @@ class UserController extends Controller
                     $message = 'An error occurred, please try again later.';
                     $this->logger->error($e);
                 }
-            } else {
-                $message = 'Invalid data, please correct them and try again.';
             }
-        } else {
-            $message = 'An error occurred, please try again.';
         }
 
         if ($message) {
@@ -105,7 +103,7 @@ class UserController extends Controller
     {
         $data = $request->getParsedBody();
         $success = false;
-        $message = '';
+        $message = 'An error occurred, please try again.';
         $redirectUrl = $this->router->pathFor('user-login-form');
 
         if (false !== $request->getAttribute('csrf_status')) {
@@ -113,6 +111,8 @@ class UserController extends Controller
                 ->key('email', v::stringType()->notEmpty()->email())
                 ->key('password', v::stringType()->notEmpty())
                 ->validate($data);
+
+            $message = 'Invalid data, please correct them and try again.';
 
             if ($valid) {
                 try {
@@ -140,11 +140,7 @@ class UserController extends Controller
                     $message = 'An error occurred, please try again later.';
                     $this->logger->error($e);
                 }
-            } else {
-                $message = 'Invalid data, please correct them and try again.';
             }
-        } else {
-            $message = 'An error occurred, please try again.';
         }
 
         if ($message) {
@@ -176,13 +172,15 @@ class UserController extends Controller
     {
         $data = $request->getParsedBody();
         $success = false;
-        $message = '';
+        $message = 'An error occurred, please try again.';
         $redirectUrl = $this->router->pathFor('user-forgot-password-form');
 
         if (false !== $request->getAttribute('csrf_status')) {
             $valid = v::arrayType()
                 ->key('email', v::stringType()->notEmpty()->email())
                 ->validate($data);
+
+            $message = 'Invalid data, please correct them and try again.';
 
             if ($valid) {
                 try {
@@ -210,11 +208,7 @@ class UserController extends Controller
                     $message = 'An error occurred, please try again later.';
                     $this->logger->error($e);
                 }
-            } else {
-                $message = 'Invalid data, please correct them and try again.';
             }
-        } else {
-            $message = 'An error occurred, please try again.';
         }
 
         if ($message) {
@@ -293,11 +287,15 @@ class UserController extends Controller
                 'code' => $data['code'],
             ]);
 
+            $message = 'An error occurred, please try again.';
+
             if (false !== $request->getAttribute('csrf_status')) {
                 $valid = v::arrayType()
                     ->key('password', v::stringType()->notEmpty())
                     ->keyValue('password_confirmation', 'equals', 'password')
                     ->validate($data);
+
+                $message = 'Invalid data, please correct them and try again.';
 
                 if ($valid) {
                     try {
@@ -326,11 +324,7 @@ class UserController extends Controller
                         $message = 'An error occurred, please try again later.';
                         $this->logger->error($e);
                     }
-                } else {
-                    $message = 'Invalid data, please correct them and try again.';
                 }
-            } else {
-                $message = 'An error occurred, please try again.';
             }
         }
 
@@ -370,7 +364,7 @@ class UserController extends Controller
     {
         $data = $request->getParsedBody();
         $success = false;
-        $message = '';
+        $message = 'An error occurred, please try again.';
         $redirectUrl = $this->router->pathFor('user-change-password-form');
 
         if (false !== $request->getAttribute('csrf_status')) {
@@ -379,6 +373,8 @@ class UserController extends Controller
                 ->key('password', v::stringType()->notEmpty())
                 ->keyValue('password_confirmation', 'equals', 'password')
                 ->validate($data);
+
+            $message = 'Invalid data, please correct them and try again.';
 
             if ($valid) {
                 try {
@@ -397,11 +393,7 @@ class UserController extends Controller
                     $message = 'An error occurred, please try again later.';
                     $this->logger->error($e);
                 }
-            } else {
-                $message = 'Invalid data, please correct them and try again.';
             }
-        } else {
-            $message = 'An error occurred, please try again.';
         }
 
         if ($message) {
@@ -425,13 +417,15 @@ class UserController extends Controller
     {
         $data = $request->getParsedBody();
         $success = false;
-        $message = '';
+        $message = 'An error occurred, please try again.';
         $redirectUrl = $this->router->pathFor('user-send-activation-form');
 
         if (false !== $request->getAttribute('csrf_status')) {
             $valid = v::arrayType()
                 ->key('email', v::stringType()->notEmpty()->email())
                 ->validate($data);
+
+            $message = 'Invalid data, please correct them and try again.';
 
             if ($valid) {
                 try {
@@ -462,11 +456,7 @@ class UserController extends Controller
                     $message = 'An error occurred, please try again later.';
                     $this->logger->error($e);
                 }
-            } else {
-                $message = 'Invalid data, please correct them and try again.';
             }
-        } else {
-            $message = 'An error occurred, please try again.';
         }
 
         if ($message) {
